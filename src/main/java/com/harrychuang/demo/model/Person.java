@@ -3,19 +3,19 @@ package com.harrychuang.demo.model;
 import java.util.UUID;
 
 public class Person {
-    private final UUID id;
-    private final String name;
+  private final UUID id;
+  private final String name;
 
-    public Person(UUID id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+  public Person(UUID id, String name) {
+    this.id = id;
+    this.name = name;
+  }
 
-    public UUID getId() {
-        return id;
-    }
+  public UUID getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 }

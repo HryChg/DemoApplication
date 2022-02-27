@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController // NOTE-HC Delcare this class as a REST API Controller for Spring Boot
 public class PersonController {
-    private final PersonService personService;
+  private final PersonService personService;
 
-    @Autowired // NOTE-HC Automatically inject a PersonService class into this class
-    public PersonController(PersonService personService) {
-        this.personService = personService;
-    }
+  @Autowired // NOTE-HC Automatically inject a PersonService class into this class
+  public PersonController(PersonService personService) {
+    this.personService = personService;
+  }
 
-    @PostMapping
-    public void addPerson(Person person) {
-        personService.addPerson(person);
-    }
+  @PostMapping
+  public void addPerson(Person person) {
+    personService.addPerson(person);
+  }
 }
