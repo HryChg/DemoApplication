@@ -1,10 +1,11 @@
 package com.harrychuang.demo.dao;
 
 import com.harrychuang.demo.model.Person;
-
+import java.util.List;
 import java.util.UUID;
 
-public interface PersonDAO {
+public interface PersonDao {
+
   int insertPerson(UUID id, Person peron);
 
   // NOTE-HC Provides default method for insertPerson so that children class are not required to
@@ -14,4 +15,6 @@ public interface PersonDAO {
     UUID id = UUID.randomUUID();
     return insertPerson(id, person);
   }
+
+  List<Person> selectAllPeople();
 }
