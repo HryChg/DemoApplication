@@ -23,9 +23,11 @@ public class PersonService {
   /**
    * NOTE-HC: - @Autowired: Autowiring the PersonDAO interface into this class
    * - @Qualifier("fakeDAO"): By giving PersonaDAO class a Unique Identifier on the class,
-   * Spring-boot lets you decide which specific PersonaDAO you want to wire up and use it
+   *    Spring-boot lets you decide which specific PersonaDAO you want to wire up and use it
+   *      - fakeDao: Implemented with an in memory array list
+   *      - postgres: Implemented with postgres DB
    * - @Qualifier: Because we can have multiple implementation of interface PersonDAO, we must have
-   * a way to distinguish them
+   *     a way to distinguish them
    */
   // @formatter:on
   @Autowired
