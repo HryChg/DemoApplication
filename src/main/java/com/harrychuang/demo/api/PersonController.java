@@ -5,9 +5,11 @@ import com.harrychuang.demo.service.PersonService;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,11 +27,10 @@ public class PersonController {
 
   // @formatter:off
   /**
-   * NOTE-HC
-   *  - `@PostMapping`: declare this method as a post endpoint
-   *  - `@RequestBody`: declare this parameter as the body of the request.
-   *      Since Person's constructor params are already declared `@JsonProperty("XXX")`,
-   *      Spring-boot can automatically map the JSON properties to the class properties.
+   * NOTE-HC - `@PostMapping`: declare this method as a post endpoint - `@RequestBody`: declare this
+   * parameter as the body of the request. Since Person's constructor params are already declared
+   * `@JsonProperty("XXX")`, Spring-boot can automatically map the JSON properties to the class
+   * properties.
    */
   // @formatter:on
   @PostMapping
@@ -44,8 +45,17 @@ public class PersonController {
 
   @GetMapping(path = "/{id}")
   public Person getPersonById(@PathVariable("id") UUID id) {
-    return personService.getPersonById(id)
-        .orElse(null);
+    return personService.getPersonById(id).orElse(null);
     // TODO-HC Return 404 instead of NULL with HTTP 200
+  }
+
+  @DeleteMapping(path = "{id}")
+  public void deletePersonById(@PathVariable("id") UUID id) {
+    personService.deletePerson(id);
+  }
+
+  @PutMapping(path = "{id}")
+  public void updatePersonById(@PathVariable("id") UUID id, @RequestBody Person personToUpdate) {
+    personService.updatePerson(id, personToUpdate);
   }
 }

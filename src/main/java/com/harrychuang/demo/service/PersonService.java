@@ -21,12 +21,11 @@ public class PersonService {
 
   // @formatter:off
   /**
-   * NOTE-HC:
-   *  - @Autowired: Autowiring the PersonDAO interface into this class
-   *  - @Qualifier("fakeDAO"): By giving PersonaDAO class a Unique Identifier on the class,
-   *      Spring-boot lets you decide which specific PersonaDAO you want to wire up and use it
-   *  - @Qualifier: Because we can have multiple implementation of interface PersonDAO,
-   *      we must have a way to distinguish them
+   * NOTE-HC: - @Autowired: Autowiring the PersonDAO interface into this class
+   * - @Qualifier("fakeDAO"): By giving PersonaDAO class a Unique Identifier on the class,
+   * Spring-boot lets you decide which specific PersonaDAO you want to wire up and use it
+   * - @Qualifier: Because we can have multiple implementation of interface PersonDAO, we must have
+   * a way to distinguish them
    */
   // @formatter:on
   @Autowired
@@ -44,5 +43,13 @@ public class PersonService {
 
   public Optional<Person> getPersonById(UUID id) {
     return personDao.selectPersonById(id);
+  }
+
+  public int deletePerson(UUID id) {
+    return personDao.deletePersonById(id);
+  }
+
+  public int updatePerson(UUID id, Person person) {
+    return personDao.updatePersonById(id, person);
   }
 }
