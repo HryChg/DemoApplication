@@ -46,5 +46,6 @@ public class PersonController {
   public Person getPersonById(@PathVariable("id") UUID id) {
     return personService.getPersonById(id)
         .orElse(null);
+    // TODO-HC Return 404 instead of NULL with HTTP 200
   }
 }
