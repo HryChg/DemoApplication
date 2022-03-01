@@ -13,23 +13,19 @@ import org.springframework.stereotype.Service;
 // specific.
 public class PersonService {
 
-  // NOTE-HC We are using interface here so that we can temporary use the
-  // FakePersonDataAccessService
-  //  as a mockDB. This makes it very say to switch to a real DB in the future by simple passing int
-  //  a DB class that implements the same interface `PersonDAO`
+  // NOTE-HC We are using interface here so that we can temporarily use the
+  //  FakePersonDataAccessService as a mockDB. This makes it very say to switch to a real DB in
+  //  the future by simple passing into a DB class that implements the same interface `PersonDAO`
   private final PersonDao personDao;
 
-  // @formatter:off
-  /**
-   * NOTE-HC: - @Autowired: Autowiring the PersonDAO interface into this class
-   * - @Qualifier("fakeDAO"): By giving PersonaDAO class a Unique Identifier on the class,
-   *    Spring-boot lets you decide which specific PersonaDAO you want to wire up and use it
-   *      - fakeDao: Implemented with an in memory array list
-   *      - postgres: Implemented with postgres DB
-   * - @Qualifier: Because we can have multiple implementation of interface PersonDAO, we must have
-   *     a way to distinguish them
-   */
-  // @formatter:on
+  // NOTE-HC:
+  //  - @Autowired: Autowiring the PersonDAO interface into this class
+  //  - @Qualifier("fakeDAO"): By giving PersonaDAO class a Unique Identifier on the class,
+  //      Spring-boot lets you decide which specific PersonaDAO you want to wire up and use it
+  //      - fakeDao: Implemented with an in memory array list
+  //      - postgres: Implemented with postgres DB
+  //  - @Qualifier: Because we can have multiple implementation of interface PersonDAO,
+  //      we must have a way to distinguish them
   @Autowired
   public PersonService(@Qualifier("fakeDao") PersonDao personDao) {
     this.personDao = personDao;
