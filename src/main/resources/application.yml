@@ -1,0 +1,15 @@
+server:
+  # Define a custom port instead of the
+  port: 8443
+  ssl:
+    # The alias mapped to the certificate
+    key-alias: tomcat
+    # The password used to generate the certificate
+    key-store-password: keystore-password
+    # The format used for the keystore
+    key-store-type: PKCS12
+    # The path to the keystore containing the certificate
+    key-store: classpath:keystore.p12
+security:
+  # Tell Spring Security (if used) to require requests over HTTPS
+  require-ssl: 'true'
